@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TouringCarLayoutView">
+        <attr name="top_title" format="string"/>
+        <attr name="center_title" format="string"/>
+        <attr name="bottom_title" format="string"/>
+
+        <attr name="top_title_color" format="color"/>
+        <attr name="center_title_color" format="color"/>
+        <attr name="bottom_title_color" format="color"/>
+
+        <attr name="top_title_size" format="dimension"/>
+        <attr name="center_title_size" format="dimension"/>
+        <attr name="bottom_title_size" format="dimension"/>
+
+        <attr name="topcenter_gap" format="dimension"/>
+        <attr name="bottomcenter_gap" format="dimension"/>
+
+        <attr name="ringline_width" format="dimension"/>
+        <attr name="virtual_width" format="dimension"/>
+        <attr name="firststage_scale" format="float"/>
+        <attr name="secondstage_scale" format="float"/>
+        <attr name="point_count" format="integer"/>
+        <attr name="ringline_alpha" format="integer"/>
+        <attr name="ringline_color" format="color"/>
+
+    </declare-styleable>
+</resources>

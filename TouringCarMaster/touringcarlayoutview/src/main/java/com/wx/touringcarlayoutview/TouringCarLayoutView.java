@@ -56,6 +56,12 @@ public class TouringCarLayoutView extends RelativeLayout{
         int pointCount = typedArray.getInt(R.styleable.TouringCarLayoutView_point_count,8);
         int ringLineAlphe = typedArray.getInt(R.styleable.TouringCarLayoutView_ringline_alpha,120);
         int ringLineColor = typedArray.getColor(R.styleable.TouringCarLayoutView_ringline_color,Color.WHITE);
+        boolean isConnect = typedArray.getBoolean(R.styleable.TouringCarLayoutView_isConnect,false);
+
+        float besselHeightScale = typedArray.getFloat(R.styleable.TouringCarLayoutView_bessel_bg_scale,0.2f);
+        int besselColor1 = typedArray.getColor(R.styleable.TouringCarLayoutView_bessel_color1,0x66f5f5f5);
+        int besselColor2 = typedArray.getColor(R.styleable.TouringCarLayoutView_bessel_color2,0x88B23AEE);
+        boolean isOpenBessel = typedArray.getBoolean(R.styleable.TouringCarLayoutView_isopen_bessel,true);
 
         typedArray.recycle();
 
@@ -63,11 +69,12 @@ public class TouringCarLayoutView extends RelativeLayout{
 
         mBesselBgView = new BesselBgView(getContext());
         mBesselBgView.setLayoutParams(layoutParams);
+        mBesselBgView.initBesselBgView(besselHeightScale,besselColor1,besselColor2,isOpenBessel);
         addView(mBesselBgView);
 
         mRingView = new RingView(getContext());
         mRingView.setLayoutParams(layoutParams);
-        mRingView.initRingView(ringLineWidth,virtualWidth,firstStageScale,secondStageScale,pointCount,ringLineAlphe,ringLineColor);
+        mRingView.initRingView(ringLineWidth,virtualWidth,firstStageScale,secondStageScale,pointCount,ringLineAlphe,ringLineColor,isConnect);
         addView(mRingView);
 
         mContentView = new ContentView(getContext());
@@ -88,6 +95,14 @@ public class TouringCarLayoutView extends RelativeLayout{
 
     public void setRingLineColor(int ringLineColor) {
         mRingView.setRingLineColor(ringLineColor);
+    }
+
+    public void setConnect(boolean isconnect) {
+        mRingView.setConnect(isconnect);
+    }
+
+    public boolean getConnect() {
+        return mRingView.getConnect();
     }
 
     public void setTopTitle(String topTitle) {
@@ -112,6 +127,18 @@ public class TouringCarLayoutView extends RelativeLayout{
 
     public void setBottomTitleColor(int bottomTitleColor) {
         mContentView.setBottomTitleColor(bottomTitleColor);
+    }
+
+    public void setBesselColor1(int besselColor1) {
+        mBesselBgView.setBesselColor1(besselColor1);
+    }
+
+    public void setBesselColor2(int besselColor2) {
+        mBesselBgView.setBesselColor1(besselColor2);
+    }
+
+    public void setBackgroundColors(int[] backgroundColors) {
+        mBesselBgView.setBackgroundColors(backgroundColors);
     }
 
 }

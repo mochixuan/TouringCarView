@@ -102,7 +102,7 @@ public class ContentView extends View{
         }
         if (mBottomTitle != null && mBottomTitle.length()>0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mPaint.setLetterSpacing(0.1f);
+                mPaint.setLetterSpacing(0f);
             }
             mPaint.setColor(mBottomTitleColor);
             mPaint.setTextSize(mBottomTitleTextSize);
@@ -111,7 +111,7 @@ public class ContentView extends View{
         }
         if (mTopTitle != null && mTopTitle.length()>0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mPaint.setLetterSpacing(0.1f);
+                mPaint.setLetterSpacing(0f);
             }
             mPaint.setColor(mTopTitleColor);
             mPaint.setTextSize(mTopTitleTextSize);

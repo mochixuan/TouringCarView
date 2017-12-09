@@ -23,6 +23,12 @@
         <attr name="point_count" format="integer"/>
         <attr name="ringline_alpha" format="integer"/>
         <attr name="ringline_color" format="color"/>
+        <attr name="isConnect" format="boolean"/>
+
+        <attr name="bessel_bg_scale" format="float"/>
+        <attr name="bessel_color1" format="color"/>
+        <attr name="bessel_color2" format="color"/>
+        <attr name="isopen_bessel" format="boolean"/>
 
     </declare-styleable>
 </resources>

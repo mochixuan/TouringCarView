@@ -47,6 +47,8 @@ public class RingView extends View {
 
     private float mRotateAngle ;
 
+    private boolean isConnect;
+
     public RingView(Context context) {
         this(context,null);
     }
@@ -65,7 +67,7 @@ public class RingView extends View {
         mRotateAngle = 0f;
     }
 
-    public void initRingView(float ringLineWidth,float virtualWidth,float firstStageScale,float secondStageScale,int pointCount,int ringLineAlphe,int ringLineColor) {
+    public void initRingView(float ringLineWidth,float virtualWidth,float firstStageScale,float secondStageScale,int pointCount,int ringLineAlphe,int ringLineColor,boolean isConnect) {
         mRingLineWidth = ringLineWidth;
         mVirtualWidth = virtualWidth;
         FirstStageScale = firstStageScale;
@@ -73,6 +75,7 @@ public class RingView extends View {
         mPointCount = pointCount;
         mRingLineAlpha = ringLineAlphe;
         mRingLineColor = ringLineColor;
+        this.isConnect = isConnect;
     }
 
     @Override
@@ -188,7 +191,9 @@ public class RingView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                startLargeAnim();
+                if (isConnect) {
+                    startLargeAnim();
+                }
             }
         });
         mRingLineAnim.start();
@@ -246,7 +251,7 @@ public class RingView extends View {
     public void onStartAnim(){
         if (this.mRingLineProgress != 1.0f ) {
             startRingLineAnim();
-        } else {
+        } else if (isConnect){
             startLargeAnim();
         }
     }
@@ -270,4 +275,20 @@ public class RingView extends View {
         this.mRingLineColor = ringLineColor;
         invalidate();
     }
+
+    public void setConnect(boolean isconnect) {
+        isConnect = isconnect;
+        if (isConnect) {
+            onStartAnim();
+        } else {
+            onEndAnim();
+            mCurRadius = mMaxRadius*FirstStageScale;
+        }
+        invalidate();
+    }
+
+    public boolean getConnect() {
+        return isConnect;
+    }
+
 }
